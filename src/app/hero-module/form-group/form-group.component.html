@@ -1,0 +1,22 @@
+<form [formGroup]="profileHero" (submit)="onSubmit()">
+    <label for="first-name "> <h3>First Name:</h3> </label>
+    <br />
+    <input id="first-name " type="text " formControlName="firstname " /> <br />
+    <label for="last-name "><h3>Last Name:</h3> </label>
+    <br />
+    <input id="last-name " type="text " formControlName="lastName " />
+    <div id="address">
+        <h4>
+            Address
+            <form formGroupName="address">
+                <label for="street"><h5>Street</h5></label><br/>
+                <input type="text" id="street" formControlName="street" /><br>
+                <label for="city"><h5>City</h5></label> <br>
+                <input id="city" type="text" formArrayName="city"><br>
+                <label for="strate"><h5>Strate</h5></label><br>
+                <input id="strate" type="text" formControlName="strate"> </form>
+        </h4>
+    </div>
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!profileHero.valid">Submit</button>
+</form>

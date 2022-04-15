@@ -8,7 +8,11 @@ import { Hero } from 'src/app/hero';
 export class InMemoryDataService implements InMemoryDbService  {
 
   constructor() { }
+<<<<<<< Updated upstream
    createDb() {
+=======
+   createDb(): any {
+>>>>>>> Stashed changes
     const powers = ['Really Smart', 'Super Flexible', 'Super Hot', 'Weather Changer'];
     const heroes = [
       { id: 11, name: 'Dr Nice', power: powers[3] , alterEgo: 'Chuck Overstreet'  },
@@ -24,9 +28,14 @@ export class InMemoryDataService implements InMemoryDbService  {
 
     ];
     return {heroes};
+<<<<<<< Updated upstream
   }
   genId(heroes: Hero[]): number {
     return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+=======
+>>>>>>> Stashed changes
   }
-
+ genId(heroes: Hero[]): number {
+  return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+ }
 }
