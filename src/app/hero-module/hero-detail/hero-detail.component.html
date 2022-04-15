@@ -1,18 +1,16 @@
 <div *ngIf="hero">
-  <h2 >{{hero.name | uppercase}} Details id: {{hero.id}}</h2>
+    <h2>{{hero.name | uppercase}} Details id: {{hero.id}}</h2>
     <div class="p-field p-grid">
-      <label class="p-col-fixed" style="width:100px" for="hero-name">Hero name: </label>
-      <input class="p-col" id="hero-name" [(ngModel)]="hero.name" size="30" >
+        <label class="p-col-fixed" style="width:100px" for="hero-name">Hero name: </label>
+        <input class="p-col" id="hero-name" [(ngModel)]="hero.name" size="30">
     </div>
     <div class="p-field p-grid">
-      <label for="hero-power" class="p-col-fixed" style="width:100px">Power: </label>
-      <input id="hero-power" class="p-col" [(ngModel)]="hero.power"  size="30" type="">
+        <label for="hero-power" class="p-col-fixed" style="width:100px">Power: </label>
+        <input id="hero-power" class="p-col" [(ngModel)]="hero.power" size="30">
     </div>
     <div class="p-field p-grid">
-      <label for="hero-alterEgo" class="p-col-fixed" style="width:100px">Alter Ego: </label>
-      <input id="hero-alterEgo" class="p-col" [(ngModel)]="hero.alterEgo" size="30">
+        <label for="hero-alterEgo" class="p-col-fixed" style="width:100px">Alter Ego: </label>
+        <input id="hero-alterEgo" class="p-col" [(ngModel)]="hero.alterEgo" size="30">
     </div>
-
-
+    <button type="button" (click)="goBack()">Go back</button>
 </div>
-

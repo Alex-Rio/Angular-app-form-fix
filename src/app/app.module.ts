@@ -1,27 +1,39 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< Updated upstream
 import { AppRoutingModule } from './app-routing.module';
 
 import { PrimegnModule } from './primeGN/primegn/primegn.module';
 
-import { InMemoryDataService } from './hero-module/service/in-memory-data.service';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+=======
+>>>>>>> Stashed changes
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroModule } from './hero-module/hero.module';
-
+<<<<<<< Updated upstream
+import { MessageComponent } from './message/message.component';
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
+  declarations: [AppComponent, DashboardComponent, MessageComponent,],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false}
-    )
+   BrowserModule, AppRoutingModule, HttpClientModule,
+
   ],
   providers: [
     HeroModule, PrimegnModule,
+=======
+import { RouterModule } from '@angular/router';
+import {PrimegnModule} from './hero-module/primeng.module';
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    HeroModule,
+    RouterModule,
+    PrimegnModule
+>>>>>>> Stashed changes
   ],
+  providers: [ ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
