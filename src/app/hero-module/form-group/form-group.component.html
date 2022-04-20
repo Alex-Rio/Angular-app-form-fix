@@ -1,0 +1,153 @@
+<h1>From Add hero</h1>
+<form [formGroup]="profileHero" (submit)="onSubmit()">
+  <div class="card">
+    <div class="p-field p-grid">
+      <label class="p-col-fixed" style="width: 100px" for="firstName">
+        First Name:
+      </label>
+      <input
+        id="firstName"
+        class="ng-dirty p-inputtext-sm p-component"
+        type="text "
+        formControlName="firstName"
+      />
+      <div *ngIf="profileHero.controls['firstName'].invalid">
+        <div class="p-col-fixed">
+          <small
+            class="p-error ng-invalid"
+            *ngIf="profileHero.controls['firstName'].errors"
+          >
+            Don't make entiy please !
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-field p-grid">
+      <label for="lastName" class="p-col-fixed" style="width: 100px"
+        >Last Name:
+      </label>
+      <input
+        id="lastName"
+        class="p-inputtext-sm p-component"
+        type="text "
+        formControlName="lastName"
+      />
+      <div *ngIf="profileHero.controls['lastName'].invalid">
+        <div class="p-col-fixed">
+          <small
+            class="p-error ng-invalid"
+            *ngIf="profileHero.controls['lastName'].errors"
+          >
+            Don't make entiy please !
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="p-field p-grid">
+      <label for="power" class="p-col-fixed" style="width: 100px"
+        >Power:
+      </label>
+      <input
+        id="power"
+        class="p-inputtext-sm p-component"
+        type="text "
+        formControlName="power"
+      />
+      <div *ngIf="profileHero.controls['power'].invalid">
+        <div class="p-col-fixed">
+          <small
+            class="p-error ng-invalid"
+            *ngIf="profileHero.controls['power'].errors"
+          >
+            Don't make entiy please !
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="passWord" class="p-col-fixed" style="width: 100px">
+            Password:
+        </label>
+        <input
+        Ppassword
+        id="passWord"
+        type="password"
+        value="passWord"
+        formControlName="passWord"
+        >
+
+    </div>
+  </div>
+
+  <h4>Address</h4>
+  <div id="card">
+    <form formGroupName="address">
+      <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width: 100px" for="street"
+          >Street:
+        </label>
+        <input
+          type="text"
+          class="p-inputtext-sm p-component"
+          id="street"
+          formControlName="street"
+        />
+        <div *ngIf="profileHero.get('address.street')?.invalid">
+          <div class="p-col-fixed">
+            <small
+              class="p-error ng-invalid"
+              *ngIf="profileHero.get('address.street')?.errors"
+            >
+              Don't make entiy please !
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width: 100px" for="city">City:</label>
+        <input
+          id="city"
+          class="p-inputtext-sm p-component"
+          type="text"
+          formControlName="city"
+        />
+        <div *ngIf="profileHero.get('address.city')?.invalid">
+          <div class="p-col-fixed">
+            <small
+              class="p-error ng-invalid"
+              *ngIf="profileHero.get('address.city')?.errors"
+            >
+              Don't make entiy please !
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-field p-grid">
+        <label class="p-col-fixed" style="width: 100px" for="strate"
+          >Strate</label
+        >
+        <input
+          id="strate"
+          class="p-inputtext-sm p-componet"
+          type="text"
+          formControlName="strate"
+        />
+        <div *ngIf="profileHero.get('address.strate')?.invalid">
+          <div class="p-col-fixed">
+            <small
+              class="p-error ng-invalid"
+              *ngIf="profileHero.get('address.strate')?.errors"
+            >
+              Don't make entiy please !
+            </small>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button type="button" (click)="updateProfile()">Update Profile</button>
+  <button pButton type="submit" [disabled]="profileHero.invalid">Submit</button>
+</form>

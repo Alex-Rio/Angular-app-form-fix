@@ -1,0 +1,8 @@
+<h2> Top Heroes </h2>
+<div class="p-grid p-mt-2 ng-tns-c65-4">
+    <div>
+      <a  *ngFor="let hero of heroes"  class="p-grid p-mt-2 ng-tns-c65-4"  routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </div>
+</div>
