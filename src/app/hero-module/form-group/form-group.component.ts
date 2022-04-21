@@ -3,6 +3,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { HeroService } from '../service/hero.service';
 import { Hero } from 'src/app/hero';
 import { Validators } from '@angular/forms';
+import {MessageService} from 'primeng-lts/api';
+
+
 
 @Component({
   selector: 'app-form-group',
@@ -11,24 +14,25 @@ import { Validators } from '@angular/forms';
 })
 export class FormGroupComponent implements OnInit {
   heroes: Hero[] = [];
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService,  private messageService: MessageService)  {}
 
   profileHero = new FormGroup({
-    firstName: new FormControl('', Validators.required),
+    firstName: new FormControl('',Validators.required),
     lastName: new FormControl('', Validators.required),
     power: new FormControl('', Validators.required),
-    passWord: new FormControl('',),
+    passWord: new FormControl('',[Validators.required]),
     address: new FormGroup({
       street: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       strate: new FormControl('', Validators.required),
     }),
-  },Validators.required);
+  });
 
   ngOnInit(): void {}
 
   onSubmit(): void {
     console.log('value form',this.profileHero.value);
+    this.profileHero.reset();
   }
 
   getHeroes(): any {
@@ -42,6 +46,7 @@ export class FormGroupComponent implements OnInit {
       firstName: '',
       lastName: '',
       power: '',
+      passWord:'',
       address: {
         street: '',
         city: '',
@@ -64,6 +69,9 @@ export class FormGroupComponent implements OnInit {
   get powers() {
     return this.profileHero.get('power');
   }
+  get passWord(){
+    return this.profileHero.get('passWord');
+  }
   get street() {
     return this.profileHero.get('street');
   }
@@ -73,4 +81,7 @@ export class FormGroupComponent implements OnInit {
   get strate() {
     return this.profileHero.get('strate');
   }
+  showBottomCenter() {
+    this.messageService.add({key: 'bc', severity:'success', summary: 'Thông báo', detail: 'Đã thêm thành công'});
+}
 }

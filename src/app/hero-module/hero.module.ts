@@ -12,8 +12,10 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormGroupComponent } from './form-group/form-group.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormArryComponent } from './form-arry/form-arry.component';
 
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MultiSelectModule } from 'primeng-lts/multiselect';
 import { AccordionModule } from 'primeng-lts/accordion';
 import { FocusTrapModule } from 'primeng-lts/focustrap';
@@ -21,10 +23,13 @@ import { TabMenuModule } from 'primeng-lts/tabmenu';
 import { ButtonModule } from 'primeng-lts/button';
 import { InputTextModule } from 'primeng-lts/inputtext';
 import { AutoCompleteModule } from 'primeng-lts/autocomplete';
+import { DialogModule } from 'primeng-lts/dialog';
 import { PasswordModule } from 'primeng-lts/password';
-
 import { DividerModule } from 'primeng-lts/divider';
-
+import { MessagesModule } from 'primeng-lts/messages';
+import { MessageModule } from 'primeng-lts/message';
+import { MessageService } from 'primeng-lts/api';
+import {ToastModule} from 'primeng-lts/toast';
 @NgModule({
   declarations: [
     HeroDetailComponent,
@@ -33,6 +38,7 @@ import { DividerModule } from 'primeng-lts/divider';
     MessagesComponent,
     DashboardComponent,
     FormGroupComponent,
+    FormArryComponent
   ],
   imports: [
     CommonModule,
@@ -41,9 +47,11 @@ import { DividerModule } from 'primeng-lts/divider';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
+      dataEncapsulation: false,
     }),
     BrowserAnimationsModule,
+    PasswordModule,
+    DividerModule,
     ButtonModule,
     FocusTrapModule,
     InputTextModule,
@@ -51,10 +59,12 @@ import { DividerModule } from 'primeng-lts/divider';
     AccordionModule,
     AutoCompleteModule,
     MultiSelectModule,
-    PasswordModule,
-    DividerModule,
+    DialogModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule
   ],
   exports: [HeroDetailComponent, HeroesComponent, HeroFormComponent],
-  providers: [HeroService, InMemoryDataService],
+  providers: [HeroService, InMemoryDataService, MessageService],
 })
 export class HeroModule {}

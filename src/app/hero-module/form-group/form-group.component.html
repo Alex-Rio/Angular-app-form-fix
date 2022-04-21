@@ -11,7 +11,13 @@
         type="text "
         formControlName="firstName"
       />
-      <div *ngIf="profileHero.controls['firstName'].invalid">
+      <div
+        *ngIf="
+          (profileHero.controls['firstName'].dirty ||
+            profileHero.controls['firstName'].touched) &&
+          profileHero.controls['firstName'].invalid
+        "
+      >
         <div class="p-col-fixed">
           <small
             class="p-error ng-invalid"
@@ -33,7 +39,13 @@
         type="text "
         formControlName="lastName"
       />
-      <div *ngIf="profileHero.controls['lastName'].invalid">
+      <div
+        *ngIf="
+          (profileHero.controls['lastName'].dirty ||
+            profileHero.controls['lastName'].touched) &&
+          profileHero.controls['lastName'].invalid
+        "
+      >
         <div class="p-col-fixed">
           <small
             class="p-error ng-invalid"
@@ -54,7 +66,13 @@
         type="text "
         formControlName="power"
       />
-      <div *ngIf="profileHero.controls['power'].invalid">
+      <div
+        *ngIf="
+          (profileHero.controls['power'].dirty ||
+            profileHero.controls['power'].touched) &&
+          profileHero.controls['power'].invalid
+        "
+      >
         <div class="p-col-fixed">
           <small
             class="p-error ng-invalid"
@@ -65,19 +83,7 @@
         </div>
       </div>
     </div>
-    <div class="p-field p-grid">
-        <label for="passWord" class="p-col-fixed" style="width: 100px">
-            Password:
-        </label>
-        <input
-        Ppassword
-        id="passWord"
-        type="password"
-        value="passWord"
-        formControlName="passWord"
-        >
 
-    </div>
   </div>
 
   <h4>Address</h4>
@@ -93,7 +99,13 @@
           id="street"
           formControlName="street"
         />
-        <div *ngIf="profileHero.get('address.street')?.invalid">
+        <div
+          *ngIf="
+            (profileHero.get('address.street')?.dirty ||
+              profileHero.get('address.street')?.touched) &&
+            profileHero.get('address.street')?.invalid
+          "
+        >
           <div class="p-col-fixed">
             <small
               class="p-error ng-invalid"
@@ -113,7 +125,13 @@
           type="text"
           formControlName="city"
         />
-        <div *ngIf="profileHero.get('address.city')?.invalid">
+        <div
+          *ngIf="
+            (profileHero.get('address.city')?.dirty ||
+              profileHero.get('address.city')?.touched) &&
+            profileHero.get('address.city')?.invalid
+          "
+        >
           <div class="p-col-fixed">
             <small
               class="p-error ng-invalid"
@@ -131,11 +149,17 @@
         >
         <input
           id="strate"
-          class="p-inputtext-sm p-componet"
+          class="p-inputtext-sm p-component"
           type="text"
           formControlName="strate"
         />
-        <div *ngIf="profileHero.get('address.strate')?.invalid">
+        <div
+          *ngIf="
+            (profileHero.get('address.strate')?.dirty ||
+              profileHero.get('address.strate')?.touched) &&
+            profileHero.get('address.strate')?.invalid
+          "
+        >
           <div class="p-col-fixed">
             <small
               class="p-error ng-invalid"
@@ -148,6 +172,61 @@
       </div>
     </form>
   </div>
-  <button type="button" (click)="updateProfile()">Update Profile</button>
-  <button pButton type="submit" [disabled]="profileHero.invalid">Submit</button>
+  <div class="p-field p-grid">
+    <label for="passWord" class="p-col-fixed" style="width: 100px">
+      Password:
+    </label>
+    <p-password formControlName="passWord" appendTo="">
+      <ng-template pTemplate="header">
+        <h6>Pick a password</h6>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <p-divider></p-divider>
+        <p class="p-mt-2">Suggestions</p>
+        <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+          <li>At least one lowercase</li>
+          <li>At least one uppercase</li>
+          <li>At least one numeric</li>
+          <li>Minimum 8 characters</li>
+        </ul>
+      </ng-template>
+    </p-password>
+    <div
+      *ngIf="
+        (profileHero.controls['passWord'].dirty ||
+          profileHero.controls['passWord'].touched) &&
+        profileHero.controls['passWord'].invalid
+      "
+    >
+      <div class="p-col-fixed">
+        <small
+          class="p-error ng-invalid"
+          *ngIf="profileHero.controls['passWord'].errors"
+        >
+          please don't made password is entiy
+        </small>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button
+      type="button"
+      pButton
+      styleClass="p-button-sm"
+      (click)="updateProfile()"
+    >
+      Update Profile
+    </button>
+    <p-toast position="bottom-center" key="bc"></p-toast>
+    <button
+      pButton
+      type="submit"
+      pButton
+      styleClass="p-button-sm"
+      [disabled]="profileHero.invalid"
+      (click)="showBottomCenter()"
+    >
+      Submit
+    </button>
+  </div>
 </form>
